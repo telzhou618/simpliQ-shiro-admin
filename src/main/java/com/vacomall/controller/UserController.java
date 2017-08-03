@@ -44,8 +44,8 @@ public class UserController extends AdminController{
 	@RequestMapping("/json")
 	@ResponseBody
 	public Map<String, Object> json (
-			@RequestParam(value="offset",defaultValue="1") Integer start,
-			@RequestParam(value="limit",defaultValue="10") Integer size,
+			@RequestParam(value="page",defaultValue="1") Integer page,
+			@RequestParam(value="rows",defaultValue="10") Integer size,
 			String search,
 			String sort,
 			String order,
@@ -58,7 +58,7 @@ public class UserController extends AdminController{
 		if(StringUtils.isNotBlank(sort)){
 			ew.orderBy(sort, (StringUtils.isNotBlank(order) && order.toLowerCase().equals("asc")) ? true : false);
 		}
-		Page<SysUser> pageData = sysUserService.selectPage(new Page<SysUser>(start/size+1, size),ew);
+		Page<SysUser> pageData = sysUserService.selectPage(new Page<SysUser>(page, size),ew);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("rows", pageData.getRecords());
 		map.put("total",pageData.getTotal());

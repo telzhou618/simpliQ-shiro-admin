@@ -13978,7 +13978,7 @@ nav.sidebar-nav .form-control, nav.sidebar-nav .daterangepicker .input-mini, .da
               color: #e4e6eb; }
 
               
-.pagination a {
+/* .pagination a {
     position: relative;
     padding: 0.5rem 0.75rem;
     margin-left: -1px;
@@ -13986,7 +13986,7 @@ nav.sidebar-nav .form-control, nav.sidebar-nav .daterangepicker .input-mini, .da
     color: #36a9e1;
     background-color: #fff;
     border: 1px solid #ddd;
-}
+} */
 .current{
 	position: relative;
     padding: 0.5rem 0.75rem;

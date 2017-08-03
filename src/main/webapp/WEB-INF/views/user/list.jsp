@@ -5,12 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+
+<!-- Icons -->
+<link href="/css/font-awesome.min.css" rel="stylesheet">
+<link href="/css/simple-line-icons.css" rel="stylesheet">
+<!-- Premium Icons -->
+<link href="/css/glyphicons.css" rel="stylesheet">
+<link href="/css/glyphicons-filetypes.css" rel="stylesheet">
+<link href="/css/glyphicons-social.css" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="/css/style.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="/css/table.css">
 <script type="text/javascript" src="/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="/js/views/table.js"></script>
 </head>
 <body style="overflow-y:hidden">
     <table id="dg" title="用户管理" class="easyui-datagrid fit" style="width: 100%;height: 100%;display: none;"
@@ -22,16 +33,16 @@
             	<th data-options="field:'ck',checkbox:true"></th>
                 <th field="userName" width="50">用户名</th>
                 <th field="userDesc" width="50">描述</th>
-                <th field="createTime" width="50">创建时间</th>
-                <th field="userState" width="50">状态</th>
+                <th field="createTime" width="50" formatter="formatDateTime">创建时间</th>
+                <th field="userState" width="50"  formatter="formatState">状态</th>
                 <th field="email" width="50">操作</th>
             </tr>
         </thead>
     </table>
     <div id="toolbar" style="display: none;">
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()">新增</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()">编辑</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="destroyUser()">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton text-primary" plain="true" onclick="newUser()"><i class="fa fa-plus"></i> 新增</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton text-success" plain="true" onclick="editUser()"><i class="fa fa-edit"></i> 编辑</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton text-danger" plain="true" onclick="destroyUser()"><i class="fa fa-remove"></i> 删除</a>
     </div>
     
     <div id="dlg" class="easyui-dialog" style="width:400px;display: none;"
