@@ -14,11 +14,6 @@ function formatAction(value,row,index){
 	return edit_html + del_html;
 }
 
-//编辑
-function editRow(target){
-	$('#dt').datagrid('beginEdit', getRowIndex(target));
-}
-
 //删除单条
 function deleteRow(target){
 	destroyData([target]);
@@ -73,6 +68,63 @@ function destroyData(vals){
 	            btnClass: 'btn-default',
 	            keys: ['enter'],
 	            action: function(){}
+	        }
+	    }
+	});
+}
+
+//新增
+function add(){
+	doAction({
+		title:'新增',
+		page:'/user/add'
+	});
+}
+
+function editRow(target){
+	doAction({
+		title:'编辑',
+		page:'/user/edit?id='+target
+	});
+}
+
+//执行
+function doAction(obj){
+	var $c = $.confirm({
+		title: obj.title,
+	    content: "url:"+obj.page,
+	  /*  closeIcon: true,*/
+	    theme:'material',
+	    columnClass: 'medium',
+	    buttons: {   
+	        ok: {
+	            text: "提交",
+	            btnClass: 'btn-primary',
+	            action: function(){
+	            	var $form = $(".form");
+	            	if($form.valid()){
+	            		$form.form('submit',{
+	            			success: function(result){
+	            				result =  JSON.parse(result);
+	            				if(result.success){
+	            					$('#dg').datagrid('reload');  
+	            					$c.close();
+	            				}else{
+	            					$.alert({
+	    	                		    title: '提示!',
+	    	                		    theme:'material',
+	    	                		    backgroundDismiss:true,
+	    	                		    content: result.message
+	    	                		});
+	            				}
+	                        }
+	            		});
+	            	}
+	            	return false;
+	            }
+	        },
+	        cancel: {
+	        	text: "取消"
 	        }
 	    }
 	});

@@ -27,6 +27,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.js"></script>
 <script type="text/javascript" src="/js/base.js"></script>
 <script type="text/javascript" src="/js/views/table.js"></script>
+<style type="text/css">
+.form-control-feedback {
+    margin-left: 86px !important;
+}
+</style>
 </head>
 <body style="overflow-y:hidden">
     <table id="dg" title="用户管理" class="easyui-datagrid fit" style="width: 100%;height: 100%;display: none;"
@@ -45,67 +50,8 @@
         </thead>
     </table>
     <div id="toolbar" style="display: none;">
-        <a href="javascript:void(0)" class="btn btn-primary btn-sm" plain="true" onclick="newUser()"><i class="fa fa-plus"></i> 新增</a>
+        <a href="javascript:void(0)" class="btn btn-primary btn-sm" plain="true" onclick="add()"><i class="fa fa-plus"></i> 新增</a>
         <a href="javascript:void(0)" class="btn btn-danger btn-sm" plain="true" onclick="deleteBatchRow()"><i class="fa fa-remove"></i> 删除</a>
     </div>
-    
-    <div id="dlg" class="easyui-dialog" style="width:400px;display: none;"
-            closed="true" buttons="#dlg-buttons">
-        <form id="fm" method="post" novalidate style="margin:0;padding:20px 50px">
-            <div style="margin-bottom:20px;font-size:14px;border-bottom:1px solid #ccc">User Information</div>
-            <div style="margin-bottom:10px">
-                <input name="firstname" class="easyui-textbox" required="true" label="First Name:" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="lastname" class="easyui-textbox" required="true" label="Last Name:" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="phone" class="easyui-textbox" required="true" label="Phone:" style="width:100%">
-            </div>
-            <div style="margin-bottom:10px">
-                <input name="email" class="easyui-textbox" required="true" validType="email" label="Email:" style="width:100%">
-            </div>
-        </form>
-    </div>
-    <div id="dlg-buttons" style="display: none;">
-        <a href="javascript:void(0)" class="easyui-linkbutton c6" iconCls="icon-ok" onclick="saveUser()" style="width:90px">保存</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')" style="width:90px">取消</a>
-    </div>
-    <script type="text/javascript">
-        var url;
-        function newUser(){
-            $('#dlg').dialog('open').dialog('center').dialog('setTitle','New User');
-            $('#fm').form('clear');
-            url = 'save_user.php';
-        }
-        function editUser(){
-            var row = $('#dg').datagrid('getSelected');
-            if (row){
-                $('#dlg').dialog('open').dialog('center').dialog('setTitle','Edit User');
-                $('#fm').form('load',row);
-                url = 'update_user.php?id='+row.id;
-            }
-        }
-        function saveUser(){
-            $('#fm').form('submit',{
-                url: url,
-                onSubmit: function(){
-                    return $(this).form('validate');
-                },
-                success: function(result){
-                    var result = eval('('+result+')');
-                    if (result.errorMsg){
-                        $.messager.show({
-                            title: 'Error',
-                            msg: result.errorMsg
-                        });
-                    } else {
-                        $('#dlg').dialog('close');        // close the dialog
-                        $('#dg').datagrid('reload');    // reload the user data
-                    }
-                }
-            });
-        }
-    </script>
 </body>
 </html>

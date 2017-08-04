@@ -28,7 +28,7 @@ $(function (){
     }
   } );
   //执行表单验证
-  $( '.form' ).validate( {
+  $('.form' ).validate({
     errorElement: 'em',
     errorPlacement: function ( error, element ) {
       // Add the `help-block` class to the error element
