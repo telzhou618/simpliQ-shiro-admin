@@ -1,9 +1,11 @@
 package com.vacomall.controller;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -140,11 +142,11 @@ public class UserController extends AdminController{
 	 */
 	@RequestMapping("/del")
 	@ResponseBody
-	public Rest del(String id){
-		if(StringUtils.isBlank(id)){
+	public Rest del(@RequestParam("ids[]") String[] ids){
+		if(ArrayUtils.isEmpty(ids)){
 			return Rest.failure("客户端传入对象id为空");
 		}
-		sysUserService.deleteById(id);
+		sysUserService.deleteBatchIds(Arrays.asList(ids));
 		return Rest.ok();
 	}
 }

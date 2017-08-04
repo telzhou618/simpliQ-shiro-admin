@@ -14,13 +14,18 @@
 <link href="/css/glyphicons-filetypes.css" rel="stylesheet">
 <link href="/css/glyphicons-social.css" rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.css">
 <link rel="stylesheet" type="text/css" href="/css/style.css">
+
 <link rel="stylesheet" type="text/css" href="/easyui/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css" href="/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="/css/table.css">
+
 <script type="text/javascript" src="/easyui/jquery.min.js"></script>
 <script type="text/javascript" src="/easyui/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="/easyui/locale/easyui-lang-zh_CN.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.2.3/jquery-confirm.min.js"></script>
+<script type="text/javascript" src="/js/base.js"></script>
 <script type="text/javascript" src="/js/views/table.js"></script>
 </head>
 <body style="overflow-y:hidden">
@@ -35,14 +40,13 @@
                 <th field="userDesc" width="50">描述</th>
                 <th field="createTime" width="50" formatter="formatDateTime">创建时间</th>
                 <th field="userState" width="50"  formatter="formatState">状态</th>
-                <th field="email" width="50">操作</th>
+                <th field="id" width="20"  align="center" formatter="formatAction" >操作</th>
             </tr>
         </thead>
     </table>
     <div id="toolbar" style="display: none;">
-        <a href="javascript:void(0)" class="easyui-linkbutton text-primary" plain="true" onclick="newUser()"><i class="fa fa-plus"></i> 新增</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton text-success" plain="true" onclick="editUser()"><i class="fa fa-edit"></i> 编辑</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton text-danger" plain="true" onclick="destroyUser()"><i class="fa fa-remove"></i> 删除</a>
+        <a href="javascript:void(0)" class="btn btn-primary btn-sm" plain="true" onclick="newUser()"><i class="fa fa-plus"></i> 新增</a>
+        <a href="javascript:void(0)" class="btn btn-danger btn-sm" plain="true" onclick="deleteBatchRow()"><i class="fa fa-remove"></i> 删除</a>
     </div>
     
     <div id="dlg" class="easyui-dialog" style="width:400px;display: none;"
@@ -101,25 +105,6 @@
                     }
                 }
             });
-        }
-        function destroyUser(){
-            var row = $('#dg').datagrid('getSelected');
-            if (row){
-                $.messager.confirm('Confirm','Are you sure you want to destroy this user?',function(r){
-                    if (r){
-                        $.post('destroy_user.php',{id:row.id},function(result){
-                            if (result.success){
-                                $('#dg').datagrid('reload');    // reload the user data
-                            } else {
-                                $.messager.show({    // show error message
-                                    title: 'Error',
-                                    msg: result.errorMsg
-                                });
-                            }
-                        },'json');
-                    }
-                });
-            }
         }
     </script>
 </body>
