@@ -96,12 +96,13 @@ public class UserController extends AdminController{
 	 * @return
 	 */
 	@PostMapping("/doAdd")
-	public String doAdd(SysUser sysUser){
+	@ResponseBody
+	public Rest doAdd(SysUser sysUser){
 		sysUser.setCreateTime(new Date());
 		sysUser.setUserState(SysUser._1);
 		sysUser.setPassword(BaseUtil.md51024Pwd(sysUser.getPassword(), sysUser.getUserName()));
 		sysUserService.insert(sysUser);
-		return redirectTo("/#user/list.shtml");
+		return Rest.ok();
 	}
 	
 	/**
@@ -124,7 +125,8 @@ public class UserController extends AdminController{
 	 * @return
 	 */
 	@RequestMapping("/doEdit")
-	public String edit(SysUser sysUser,Model model){
+	@ResponseBody
+	public Rest doEdit(SysUser sysUser,Model model){
 		
 		if(StringUtils.isNotBlank(sysUser.getPassword())){
 			sysUser.setPassword(BaseUtil.md51024Pwd(sysUser.getPassword(), sysUser.getUserName()));
@@ -132,7 +134,7 @@ public class UserController extends AdminController{
 			sysUser.setPassword(null);
 		}
 		sysUserService.updateById(sysUser);
-		return redirectTo("/#user/list.shtml");
+		return Rest.ok();
 	}
 	
 	/**
