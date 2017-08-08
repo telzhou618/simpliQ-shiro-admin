@@ -99,7 +99,11 @@ public class UserController extends AdminController{
 	@ResponseBody
 	public Rest doAdd(SysUser sysUser){
 		sysUser.setCreateTime(new Date());
-		sysUser.setUserState(SysUser._1);
+		if(sysUser.getUserState()!=null && sysUser.getUserState().intValue()==1){
+			sysUser.setUserState(SysUser._1);
+		}else{
+			sysUser.setUserState(SysUser._0);
+		}
 		sysUser.setPassword(BaseUtil.md51024Pwd(sysUser.getPassword(), sysUser.getUserName()));
 		sysUserService.insert(sysUser);
 		return Rest.ok();
@@ -123,6 +127,7 @@ public class UserController extends AdminController{
 	 * @param id
 	 * @param model
 	 * @return
+	 * @throws InterruptedException 
 	 */
 	@RequestMapping("/doEdit")
 	@ResponseBody
@@ -132,6 +137,11 @@ public class UserController extends AdminController{
 			sysUser.setPassword(BaseUtil.md51024Pwd(sysUser.getPassword(), sysUser.getUserName()));
 		}else{
 			sysUser.setPassword(null);
+		}
+		if(sysUser.getUserState()!=null && sysUser.getUserState().intValue()==1){
+			sysUser.setUserState(SysUser._1);
+		}else{
+			sysUser.setUserState(SysUser._0);
 		}
 		sysUserService.updateById(sysUser);
 		return Rest.ok();

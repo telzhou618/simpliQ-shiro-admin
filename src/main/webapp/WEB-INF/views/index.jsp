@@ -40,7 +40,6 @@
                     <span class="hidden-md-down"><shiro:user> <shiro:principal property="userName"></shiro:principal></shiro:user></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="/user"><i class="fa fa-user"></i> 个人中心</a>
                     <a class="dropdown-item" href="/logout" target="_top"><i class="fa fa-lock"></i> 退出</a>
                 </div>
             </li>
@@ -52,7 +51,7 @@
             <nav class="sidebar-nav">
                 <form>
                     <div class="form-group p-h mb-0">
-                        <input type="text" class="form-control" aria-describedby="search" placeholder="Search...">
+                        <input type="text" style="box-shadow: none;" class="form-control" aria-describedby="search" placeholder="Search...">
                     </div>
                 </form>
                 <ul class="nav">

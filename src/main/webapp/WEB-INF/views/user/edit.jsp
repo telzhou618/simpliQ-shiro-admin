@@ -16,7 +16,21 @@
         <label class="form-control-label col-md-2" for="confpwd">确认密码</label>
         <input type="password" class="form-control col-md-9" id="confpwd" name="confPassword" equalTo="#password" placeholder="确认密码" />
     </div>
-
+	<div class="form-group row">
+    	<label class="form-control-label col-md-2" for="confpwd">状态</label>
+	    <label class="switch switch-icon switch-primary">
+	     	 <c:choose>
+	     	 	<c:when test="${sysUser.userState==1 }">
+	         		<input type="checkbox" name="userState" class="switch-input" value="1" checked="checked">
+	     	 	</c:when>
+	     	 	<c:otherwise>
+	         		<input type="checkbox" name="userState" class="switch-input" value="1">
+	     	 	</c:otherwise>
+	     	 </c:choose>
+	         <span class="switch-label" data-on="&#xf00c" data-off="&#xf00d"></span>
+	         <span class="switch-handle"></span>
+	     </label>
+    </div>
     <div class="form-group row">
         <label class="form-control-label col-md-2" for="email">描述</label>
         <textarea rows="3" cols="" class="form-control col-md-9" placeholder="描述" name="userDesc">${sysUser.userDesc }</textarea>

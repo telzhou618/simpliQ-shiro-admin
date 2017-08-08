@@ -1500,7 +1500,7 @@ pre {
 .form-control, .daterangepicker .input-mini, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control.direction-up {
   display: block;
   width: 100%;
-  padding: 0.2rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   font-size: 0.875rem;
   line-height: 1.25;
   /* color: #9da0a8; */
@@ -1509,7 +1509,9 @@ pre {
   background-clip: padding-box;
   border: 1px solid #e4e6eb;
   border-radius: 0.25rem;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s; }
+  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+      box-shadow: inset 0 1px 3px #ddd;
+   }
   .form-control::-ms-expand, .daterangepicker .input-mini::-ms-expand, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control::-ms-expand, .input-group > .ui-select-bootstrap > input.ui-select-search.form-control.direction-up::-ms-expand {
     background-color: transparent;
     border: 0; }
