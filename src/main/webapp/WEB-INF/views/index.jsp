@@ -113,6 +113,13 @@
         </div>
         <!-- Main content -->
         <div class="main" id="ui-view" style="overflow-y: hidden;"></div>
+          <!-- Main content -->
+        <!-- <main class="main">
+            <div class="container-fluid pt-2">
+                <div id="ui-view"></div>
+            </div>
+            /.conainer-fluid
+        </main> -->
     </div>
     <footer class="app-footer">
         <a href="https://genesisui.com"></a> Copyright &copy; 甘肃米粒电子商务有限公司 

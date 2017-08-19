@@ -118,6 +118,7 @@ if ($.ajaxLoad) {
   }
 
   $(document).on('click', '.nav a[href!="#"]', function(e) {
+	 
     if ( $(this).parent().parent().hasClass('nav-tabs') || $(this).parent().parent().hasClass('nav-pills') ) {
       e.preventDefault();
     } else if ( $(this).attr('target') == '_top' ) {
@@ -160,7 +161,7 @@ function loadPage(url) {
 	    cache : false,
 	    async: false,
 	    beforeSend : function() {
-	      $.mainContent.css({ opacity : 0 });
+	      //$.mainContent.css({ opacity : 0 });
 	    },
 	    success : function() {
 	      Pace.restart();
