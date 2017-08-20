@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.vacomall</groupId>
-	<artifactId>shiro-admin</artifactId>
+	<artifactId>simpliQ-shiro-admin</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>shiro-admin Maven Webapp</name>
+	<name>simpliQ-shiro-admin Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
 
@@ -216,6 +216,6 @@
 
 
 	<build>
-		<finalName>shiro-admin</finalName>
+		<finalName>simpliQ-shiro-admin</finalName>
 	</build>
 </project>
