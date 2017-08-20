@@ -1,8 +1,8 @@
-### shiro-admin 轻量级权限管理框架
+### simpliQ-shiro-admin 轻量级权限管理框架
 
 ### 技术选型
 -------------
-Spring MVC、Mybatis、Mybatis-Plus(Mybatis增强插件)、Shiro、Mysql、Maven
+simpliQ前端模板、Spring MVC、Mybatis、Mybatis-Plus(Mybatis增强插件)、Shiro、Mysql、Maven
 
 ### 快速开始
 -------------
